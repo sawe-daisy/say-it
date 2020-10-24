@@ -1,12 +1,12 @@
 import os
 
 class Config:
-    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringa:sawedaisy@localhost/sayit'
+    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringa:sawedaisy@localhost/pitches'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-    @staticmethod
-    def init_app(app):
-        pass
+    # @staticmethod
+    # def init_app(app):
+    #     pass
     
 
 class ProdConfig(Config):
@@ -16,7 +16,7 @@ class TestConfig(Config):
     pass
 
 class DevConfig(Config):
-    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringa:sawedaisy@localhost/sayit'
+    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringa:sawedaisy@localhost/pitches'
     DEBUG = True
 
 

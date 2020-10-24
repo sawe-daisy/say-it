@@ -13,7 +13,7 @@ def create_app(config_name):
 
     #app configs
     app.config.from_object(config_options[config_name])
-    config_options[config_name].init_app(app)
+    # config_options[config_name].init_app(app)
 
     #initialization of flask extensions
     bootstrap.init_app(app)

@@ -3,7 +3,7 @@ from sqlalchemy.sql import func
 
 
 class User(db.Model):
-    ___tablename__ ='users'
+    __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key= True)
     username = db.Column(db.String(255))
 
