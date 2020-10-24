@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 from flask_bootstrap import Bootstrap
 from config import config_options
@@ -13,3 +14,8 @@ def create_app(config_name):
     #initialization of flask extensions
     bootstrap.init_app(app)
     db.init_app(app)
+
+    from .main import main as main_blueprint
+    app.register_blueprint(main_blueprint)
+
+    return app
