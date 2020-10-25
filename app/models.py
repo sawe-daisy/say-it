@@ -16,6 +16,8 @@ class User(UserMixin,db.Model):
     email = db.Column(db.String(255),unique = True,index = True)
     bio = db.Column(db.String(255))
     pass_word= db.Column(db.String(255))
+    profile_pic_path = db.Column(db.String())
+    pitch = db.relationship('Pitch', backref='user', lazy='dynamic')
 
     @property
     def password(self):
@@ -23,7 +25,7 @@ class User(UserMixin,db.Model):
 
     @password.setter
     def password(self, password):
-        self.pass_secure = generate_password_hash(password)
+        self.pass_word = generate_password_hash(password)
 
     def verify_password(self,password):
         return check_password_hash(self.pass_word,password)

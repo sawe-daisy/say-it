@@ -1,10 +1,12 @@
 from flask import render_template, redirect, url_for, flash, request
 from . import auth
 from ..models import User
-from flask_login import login_user
+from flask_login import login_user, current_user
 from .forms import RegistrationForm, LoginForm
 from ..import db
 from flask_login import login_user, logout_user, login_required
+from ..email import mail_message
+
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
@@ -25,6 +27,8 @@ def register():
         user = User(email = form.email.data, username= form.username.data, password= form.password.data)
         db.session.add(user)
         db.session.commit()
+
+        mail_message('Welcome to pitching app','email/welcome_user', user.email, user=user)
         return redirect(url_for('auth.login'))
         title = "New User"
 
