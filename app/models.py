@@ -18,6 +18,9 @@ class User(UserMixin,db.Model):
     pass_word= db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
     pitch = db.relationship('Pitch', backref='user', lazy='dynamic')
+    comments = db.relationship('Comment', backref = 'user', lazy = 'dynamic')
+    upvotes = db.relationship('Upvote', backref = 'user', lazy = 'dynamic')
+    downvotes = db.relationship('Downvote', backref = 'user', lazy = 'dynamic')
 
     @property
     def password(self):
@@ -41,6 +44,9 @@ class Pitch(db.Model):
     pitch_id= db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     details= db.Column(db.String(), index=True)
     category = db.Column(db.String(255), nullable=False)
+    comments = db.relationship('Comment',backref='pitch',lazy='dynamic')
+    upvotes = db.relationship('Upvote', backref = 'pitch', lazy = 'dynamic')
+    downvotes = db.relationship('Downvote', backref = 'pitch', lazy = 'dynamic')
 
     
     @classmethod
