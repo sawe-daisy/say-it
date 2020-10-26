@@ -35,3 +35,6 @@ The user would like to.... :
  Incase you come across errors, have questions, ideas ,concerns, or want to contribute to the application, feel free to reach me at :deesawe16@gmail.com
 
 ### License
+[MIT](https://github.com/sawe-daisy/say-it/blob/master/LICENSE)
+
+Copyright (c) 2020 **sawe-daisy**
