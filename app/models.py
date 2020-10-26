@@ -17,6 +17,7 @@ class User(UserMixin,db.Model):
     bio = db.Column(db.String(255))
     pass_word= db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
+    photos = db.relationship('PhotoProfile',backref = 'user',lazy = "dynamic")
     pitch = db.relationship('Pitch', backref='user', lazy='dynamic')
     comments = db.relationship('Comment', backref = 'user', lazy = 'dynamic')
     upvotes = db.relationship('Upvotes', backref = 'user', lazy = 'dynamic')
@@ -55,7 +56,10 @@ class Pitch(db.Model):
     upvotes = db.relationship('Upvotes', backref = 'pitch', lazy = 'dynamic')
     downvotes = db.relationship('Downvote', backref = 'pitch', lazy = 'dynamic')
 
-    
+    def save_pitches(self):
+        db.session.add(self)
+        db.session.commit()
+        
     @classmethod
     def getPitches(cls, id):
         pitches = Pitch.query.order_by(pitchId=id).desc().all()

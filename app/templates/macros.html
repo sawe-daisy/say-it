@@ -2,14 +2,14 @@
 {% for category in category %}
 <div class="col-md-4">
     <div class="card">
-        <h5 class="card-header">{{category.cateegory}}</h5>
+        <h5 class="card-header">{{category.category}}</h5>
         <div class="card-body">
           <h5 class="card-title">Pitch</h5>
           <p class="card-text">{{category.details}}</p>
           <h5 class="card-title">By:{{category.user.username}}</h5>
-          <a href="{{url_for('main.new_comment',pitches_id = category.id)}}" class="btn btn-info"> Add a comment</a>
-                    <a href="{{url_for('main.upvote',pitches_id = category.id)}}" class= "btn btn-primary btn-sm"><i class="fa fa-heart" aria-hidden="true"></i>Upvote <span>{{category.upvotes.count()}}</span></a>
-                    <a href="{{url_for('main.downvote',pitches_id = category.id)}}" class= "btn btn-danger btn-sm"><i class="fa fa-heart-o" aria-hidden="true"></i>Downvote <span>{{category.downvotes.count()}}</span></a>
+          <a href="{{url_for('main.add_comment',pitches_id = category.id)}}" class="btn btn-info"> Add a comment</a>
+          <a href="{{url_for('main.upvote',pitches_id = category.id)}}" ><i class="fa fa-heart" aria-hidden="true"></i>Upvote <span>{{category.upvotes.count()}}</span></a>
+          <a href="{{url_for('main.downvote',pitches_id = category.id)}}"><i class="fa fa-heart-o" aria-hidden="true"></i>Downvote <span>{{category.downvotes.count()}}</span></a>
         </div>
       </div>
 </div>

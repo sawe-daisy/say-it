@@ -2,7 +2,7 @@ from flask import render_template,request,redirect,url_for,abort, flash, abort
 from . import main
 from .. import db, photos
 from flask_login import login_required, current_user
-from ..models import User, Pitch, Comment, Upvotes,Downvote
+from ..models import User, Pitch, Comment, Upvotes,Downvote, PhotoProfile
 from .forms import AddPitch, UpdateProfile, CommentsForm, UpvoteForm,DownvoteForm
 from flask.views import View, MethodView
 import markdown2
@@ -67,8 +67,7 @@ def new_pitch():
         category = form.category.data
         print(current_user._get_current_object().id)
         new_pitches = Pitch(pitch_id=current_user._get_current_object().id, details=details, category=category)
-        db.session.add(new_pitches)
-        db.session.commit()
+        new_pitches.save_pitches()
 
         return redirect(url_for('main.index'))
 
