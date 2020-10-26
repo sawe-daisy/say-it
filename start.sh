@@ -1,3 +1,4 @@
 MAIL_USERNAME=daickate@gmail.com
 MAIL_PASSWORD=daickareen
-python3.6 manage.py server
+SECRET_KEY =12345sawe###%%%%
+python3.8 manage.py server

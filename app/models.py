@@ -19,7 +19,7 @@ class User(UserMixin,db.Model):
     profile_pic_path = db.Column(db.String())
     pitch = db.relationship('Pitch', backref='user', lazy='dynamic')
     comments = db.relationship('Comment', backref = 'user', lazy = 'dynamic')
-    upvotes = db.relationship('Upvote', backref = 'user', lazy = 'dynamic')
+    upvotes = db.relationship('Upvotes', backref = 'user', lazy = 'dynamic')
     downvotes = db.relationship('Downvote', backref = 'user', lazy = 'dynamic')
 
     @property
@@ -37,6 +37,13 @@ class User(UserMixin,db.Model):
     def __repr__(self):
         return f'User {self.username}'
 
+class PhotoProfile(db.Model):
+    __tablename__ = 'profile_photos'
+
+    id = db.Column(db.Integer,primary_key = True)
+    pic_path = db.Column(db.String())
+    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+
 class Pitch(db.Model):
     __tablename__='pitches'
 
@@ -45,7 +52,7 @@ class Pitch(db.Model):
     details= db.Column(db.String(), index=True)
     category = db.Column(db.String(255), nullable=False)
     comments = db.relationship('Comment',backref='pitch',lazy='dynamic')
-    upvotes = db.relationship('Upvote', backref = 'pitch', lazy = 'dynamic')
+    upvotes = db.relationship('Upvotes', backref = 'pitch', lazy = 'dynamic')
     downvotes = db.relationship('Downvote', backref = 'pitch', lazy = 'dynamic')
 
     
@@ -80,18 +87,18 @@ class Upvotes(db.Model):
 
 
     def add_upvotes(cls,id):
-        upvote_pitch = Upvote(user = current_user, pitches_id=id)
+        upvote_pitch = Upvotes(user = current_user, pitches_id=id)
         upvote_pitch.save_upvotes()
 
     
     @classmethod
     def get_upvotes(cls,id):
-        upvote = Upvote.query.filter_by(pitches_id=id).all()
+        upvote = Upvotes.query.filter_by(pitches_id=id).all()
         return upvote
 
     @classmethod
-    def get_all_upvotes(cls,pitch_id):
-        upvotes = Upvote.query.order_by('id').all()
+    def get_all_upvotes(cls,pitches_id):
+        upvotes = Upvotes.query.order_by('id').all()
         return upvotes
 
     def __repr__(self):

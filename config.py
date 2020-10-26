@@ -12,6 +12,7 @@ class Config:
     MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
     SIMPLEMDE_JS_IIFE = True
     SIMPLEMDE_USE_CDN = True
+    SECRET_KEY ='12345sawe###%%%%'
 
     # @staticmethod
     # def init_app(app):

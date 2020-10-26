@@ -5,15 +5,17 @@ from flask_login import login_required, current_user
 from ..models import User, Pitch, Comment, Upvotes,Downvote
 from .forms import AddPitch, UpdateProfile, CommentsForm, UpvoteForm,DownvoteForm
 from flask.views import View, MethodView
+import markdown2
 
 @main.route('/', methods=['GET', 'post'])
 def index():
    pitch = Pitch.query.filter_by().first()
-   promotion = Pitch.query,filter_by(category='promotion')
-   interview = Pitch.query,filter_by(category='interview')
-   product = Pitch.query,filter_by(category='product')
+   promotion = Pitch.query.filter_by(category='promotion')
+   interview = Pitch.query.filter_by(category='interview')
+   product = Pitch.query.filter_by(category='product')
    pickuplines =Pitch.query.filter_by(category='pickuplines')
    title = 'Sayit App'
+   
    upvotes = Upvotes.get_all_upvotes(pitches_id=Pitch.id)
 
    return render_template('index.html', title=title,upvotes=upvotes, promotion=promotion, product= product, interview=interview, pickuplines=pickuplines)
@@ -50,6 +52,7 @@ def update_pic(uname):
         filename = photos.save(request.files['photo'])
         path = f'photos/{filename}'
         user.profile_pic_path = path
+        user_photo = PhotoProfile(pic_path = path,user = user)
         db.session.commit()
     return redirect(url_for('main.profile', uname=uname))
 

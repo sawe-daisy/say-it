@@ -14,10 +14,10 @@ class AddPitch(FlaskForm):
 
 class CommentsForm(FlaskForm):
     details= TextAreaField("You can add your comment here", validators=[Required()])
-    submit=SubmitField
+    submit=SubmitField('submit')
 
 class UpvoteForm(FlaskForm):
-    submit = SubmitField()
+    submit = SubmitField('submit')
 
 class DownvoteForm(FlaskForm):
-    submit=SubmitField()
+    submit=SubmitField('submit')
