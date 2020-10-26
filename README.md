@@ -3,7 +3,7 @@ Sayit
 
 #### Author
 
-Peris Oduol](https://github.com/sawe-daisy)
+[Daisy Sawe]](https://github.com/sawe-daisy)
 Link to live site: 
 
 ## Description
