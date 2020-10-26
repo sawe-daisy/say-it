@@ -4,7 +4,7 @@ Sayit
 #### Author
 
 [Daisy Sawe](https://github.com/sawe-daisy)
-Link to live site: (https://sayitaspitch.herokuapp.com/)
+* Link to live site: (https://sayitaspitch.herokuapp.com/)
 
 ## Description
 This is an application that allows users to use thaere one minute wisely. The users will submit their one minute pitches and other users will vote on them and leave comments to give their feedback on them.
