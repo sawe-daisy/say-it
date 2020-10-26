@@ -86,7 +86,7 @@ def add_comment(pitches_id):
     allComents= Comment.query.filter_by(pitches_id=pitches_id).all()
     return render_template('comment.html',form=form, allComents=allComents,pitch =pitch)
 
-@main.route('/pitch/upvote/<int: pitches_id>/upvote', methods=['GET', 'POST'])
+@main.route('/pitch/upvote/<int:pitches_id>/upvote', methods=['GET', 'POST'])
 @login_required
 def upvote(pitches_id):
     pitch = Pitch.query.get(pitches_id)
@@ -109,7 +109,7 @@ def downvote(pitches_id):
     user = current_user
     douwnVotes= Downvote.query.filter_by(pitches_id=pitches_id)
 
-    if Downvote.query.filter(Downvote.user_id==user.id, Downvote.pitches_id=pitches_id).first():
+    if Downvote.query.filter(Downvote.user_id==user.id, Downvote.pitches_id==pitches_id).first():
         return redirect(url_for('main.index'))
 
     newDownvote = Downvote(pitches_id=pitches_id, user=current_user)
