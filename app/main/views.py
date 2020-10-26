@@ -1,5 +1,6 @@
 from flask import render_template,request,redirect,url_for,abort, flash, abort
 from . import main
+from flask_fontawesome import FontAwesome
 from .. import db, photos
 from flask_login import login_required, current_user
 from ..models import User, Pitch, Comment, Upvotes,Downvote, PhotoProfile

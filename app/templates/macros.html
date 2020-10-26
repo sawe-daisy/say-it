@@ -7,9 +7,9 @@
           <h5 class="card-title">Pitch</h5>
           <p class="card-text">{{category.details}}</p>
           <h5 class="card-title">By:{{category.user.username}}</h5>
-          <a href="{{url_for('main.add_comment',pitches_id = category.id)}}" class="btn btn-info"> Add a comment</a>
-          <a href="{{url_for('main.upvote',pitches_id = category.id)}}" ><i class="fa fa-heart" aria-hidden="true"></i>Upvote <span>{{category.upvotes.count()}}</span></a>
-          <a href="{{url_for('main.downvote',pitches_id = category.id)}}"><i class="fa fa-heart-o" aria-hidden="true"></i>Downvote <span>{{category.downvotes.count()}}</span></a>
+          <a href="{{url_for('main.add_comment',pitches_id = category.id)}}" class="btn btn-primary"> Add a comment</a>
+          <a href="{{url_for('main.upvote',pitches_id = category.id)}}" ><i class="fas fa-thumbs-up" ></i>Upvote <span>{{category.upvotes.count()}}</span></a>
+          <a href="{{url_for('main.downvote',pitches_id = category.id)}}"><i class="fas fa-thumbs-down" ></i>Downvote <span>{{category.downvotes.count()}}</span></a>
         </div>
       </div>
 </div>
