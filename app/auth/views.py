@@ -31,9 +31,10 @@ def register():
         db.session.add(user)
         db.session.commit()
 
-        mail_message("Welcome to pitching app","email/welcome_user", user.email, user=user)
-        
-        return redirect(url_for('auth.login'))
+        try:
+            mail_message("Welcome to pitching app","email/welcome_user", user.email, user=user)
+        except:
+            return redirect(url_for('auth.login'))
         title = "New User"
 
     return render_template('auth/register.html', registration_form= form)
